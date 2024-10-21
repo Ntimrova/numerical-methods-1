@@ -11,7 +11,6 @@ const evaluateEquation = (equation, x) => {
     }
   };
   
-  // Iterative method (fixed-point iteration)
   export const iterativeMethod = (equation, a, b, precision) => {
     let x0 = (a + b) / 2; // initial guess
     let x1 = evaluateEquation(equation, x0);
