@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { bisectionMethod, newtonMethod, iterativeMethod } from '../utils/methods';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import calculatorIcon from '../icon/free-icon-computer-science-3581229.png';
+import styles from '../styles/App.module.css'; 
 
-const App = () => {  
+const App = () => {
   const [result, setResult] = useState(null);
   const [method, setMethod] = useState('bisection');
   const [tolerance, setTolerance] = useState(0.0001);
@@ -38,22 +40,26 @@ const App = () => {
   });
 
   return (
-    <div>
-      <h1>Чисельне розв'язування нелінійних рівнянь</h1>
-      <h2>Рівняння: ln(5x - 3) = 0.1x(1 + x)</h2>
+    <div className={styles.container}>
+      <h1 className={styles.header}>  Чисельне розв'язування нелінійних рівнянь
+      <img src={calculatorIcon} alt="Calculator Icon" style={{ width: '35px', marginRight: '1px' }} />
+       </h1>
+      
+      <h2 className={styles.subheader}>Рівняння: ln(5x - 3) = 0.1x(1 + x)</h2>
 
-      <label>
+      <label className={styles.label}>
         Точність (tolerance):
         <input
+          className={styles.input}
           type="number"
           value={tolerance}
           onChange={(e) => setTolerance(parseFloat(e.target.value))}
         />
       </label>
 
-      <label>
+      <label className={styles.label}>
         Виберіть метод:
-        <select value={method} onChange={(e) => setMethod(e.target.value)}>
+        <select className={styles.input} value={method} onChange={(e) => setMethod(e.target.value)}>
           <option value="bisection">Метод дихотомії</option>
           <option value="newton">Метод Ньютона</option>
           <option value="iterative">Ітераційний метод</option>
@@ -62,14 +68,16 @@ const App = () => {
 
       {method === 'bisection' && (
         <>
-          <label>
+          <label className={styles.label}>
             Інтервал [a, b]:
             <input
+              className={styles.input}
               type="number"
               value={range.a}
               onChange={(e) => setRange({ ...range, a: parseFloat(e.target.value) })}
             />
             <input
+              className={styles.input}
               type="number"
               value={range.b}
               onChange={(e) => setRange({ ...range, b: parseFloat(e.target.value) })}
@@ -79,9 +87,10 @@ const App = () => {
       )}
 
       {(method === 'newton' || method === 'iterative') && (
-        <label>
+        <label className={styles.label}>
           Початкове наближення (x0):
           <input
+            className={styles.input}
             type="number"
             value={x0}
             onChange={(e) => setX0(parseFloat(e.target.value))}
@@ -89,7 +98,7 @@ const App = () => {
         </label>
       )}
 
-      <button onClick={handleCalculate}>Розрахувати</button>
+      <button className={styles.button} onClick={handleCalculate}>Розрахувати</button>
 
       {result !== null && (
         <div>
@@ -97,7 +106,7 @@ const App = () => {
         </div>
       )}
 
-      <table>
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>Метод</th>
@@ -114,16 +123,18 @@ const App = () => {
         </tbody>
       </table>
 
-      <ResponsiveContainer width="100%" height={400}>
-        <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="x" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="y" stroke="#8884d8" activeDot={{ r: 8 }} />
-        </LineChart>
-      </ResponsiveContainer>
+      <div className={styles.chartContainer}>
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="x" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="y" stroke="#8884d8" activeDot={{ r: 8 }} />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };
