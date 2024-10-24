@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/numerical-methods-1/static/css/main.7acaea2f.css",
-    "main.js": "/numerical-methods-1/static/js/main.9d9f763d.js",
+    "main.css": "/numerical-methods-1/static/css/main.ac2b5634.css",
+    "main.js": "/numerical-methods-1/static/js/main.bb2e93d6.js",
+    "static/media/free-icon-computer-science-3581229.png": "/numerical-methods-1/static/media/free-icon-computer-science-3581229.299a4c229ee2ed89743c.png",
     "index.html": "/numerical-methods-1/index.html",
-    "main.7acaea2f.css.map": "/numerical-methods-1/static/css/main.7acaea2f.css.map",
-    "main.9d9f763d.js.map": "/numerical-methods-1/static/js/main.9d9f763d.js.map"
+    "main.ac2b5634.css.map": "/numerical-methods-1/static/css/main.ac2b5634.css.map",
+    "main.bb2e93d6.js.map": "/numerical-methods-1/static/js/main.bb2e93d6.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.9d9f763d.js"
+    "static/css/main.ac2b5634.css",
+    "static/js/main.bb2e93d6.js"
   ]
 }
